@@ -45,3 +45,5 @@ Results:
 ## 5. Conclusions
 
 Conclusions from Part 1: Higher recovery rates reduced the peak number of infections, lowered total deaths, and decreased R₀. This shows that faster recovery can significantly reduce epidemic severity by decreasing the number of people infected, the number of deaths, and the number of people requiring treatment at the same time. Interestingly, the epidemic peak generally occurred later as the recovery rate increased.
+
+Conclusion from Part 3: Working towards reducing the recovery rate by effective and quick use of medicine is a great way to fight a pandemic. An increase in the recovery rate of on 50% could still result in a reductiion of deaths by half or even more as shown by our experiments.The amount of peak infections also decrease by about half, howver the recovery rate does not seem to have a signifficant effect on the lenght of the infection peak as long as R0 is larger than 1. However as soon as we get R0 <= 1, which can be done with a high recovery rate, the spread is no longer pandemic and the number of peak days becomes 0.
