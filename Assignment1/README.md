@@ -30,8 +30,25 @@ Results:
 ---
 
 ## 3. Part 2 — Scenario comparison
-- Result tables for Scenario A (High Transmission) and Scenario B (Low Transmission)
-- Which scenario is worse for public health, and why
+- Scenario A: 
+| gamma | R0   | peak_infected | peak_day | total_deaths |
+|------:|-----:|--------------:|---------:|-------------:|
+|  0.05 | 8.00 |           521 |       21 |          285 |
+|  0.10 | 4.00 |           340 |       22 |          160 |
+|  0.15 | 2.67 |           213 |       24 |          103 |
+|  0.20 | 2.00 |           124 |       27 |           67 |
+|  0.25 | 1.60 |            63 |       30 |           43 | 
+
+- Scenario B:
+| gamma | R0   | peak_infected | peak_day | total_deaths |
+|------:|-----:|--------------:|---------:|-------------:|
+|  0.05 | 4.00 |           371 |       44 |           88 |
+|  0.10 | 2.00 |           139 |       52 |           37 |
+|  0.15 | 1.33 |            31 |       67 |           14 |
+|  0.20 | 1.00 |             5 |        0 |            2 |
+|  0.25 | 0.80 |             5 |        0 |            0 |  
+
+- The High Transmission Scenario A is worse for public heatlh, because it returns a higher infected population, has a steeper curve, a higher death toll and will flood hospitals with sick patients.
 
 ---
 
