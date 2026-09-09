@@ -37,8 +37,30 @@ Results:
 
 ## 4. Part 3 — Policy recommendations
 - 4.1 Parameter impact analysis
+
+How does increasing recovery rate affect peak infections, total deaths, and epidemic duration?
+
+Looking at the first experiment an increase in the recovery rate reduces the peak number of infections greatly from 480 for gamma = 0,05 to 18 for gamma = 0,25. The total number of deaths also falls from 165 to 11, however the peak days sligthly increase (from 26 to 30), with the highest number of 33 days at gamma = 0,20.
+
 - 4.2 Intervention analysis
+
+If an intervention could increase recovery rate by 50%, what would be the expected impact on total deaths? Scenario A as baseline.
+
+To examine a recovery rate increase of 50% we could look at the experiments and the change in deats from gamma = 0,10 and gamma = 0,15.
+
+In the first experiment we see a fall in deaths from 84 to 48.
+In Scenario A the fall in deaths is from 160 and 103.
+In Scenario B the deaths change from 37 and 14.
+
+Across all experiments we also see a significant drop in peak infections, however the length of the peak in days stays relatively the same. 
+
+Looking deeper into Scenario A the fall in deaths from 160 to 103 represent a decrease of 35,6%. The peak infected fall from 340 to 213, decrease of 37,4%. The peak days go up very slightly from 22 to 24.
+
 - 4.3 Real-world application
+
+Name one real medical intervention that could increase recovery rates. Explain the mechanism and estimate realistic effectiveness.
+
+Anti-viral treatments plus quick and redily available at home testing could double the recovery rate. This could help provide earlier more effective treatments and move people out of the infected category at twice the rate. Using Scenario A as a baseline we compare gamma = 0,05 and 0,10 the total number of deats decreases from 285 to 160 (a fall of 43,9%). In a real world scenario this is already a really great result in terms of saving lives.
 
 ---
 
