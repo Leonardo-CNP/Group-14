@@ -1,0 +1,7 @@
+cobra
+escher
+numpy
+matplotlib
+pandas
+jupyter
+nbconvert
