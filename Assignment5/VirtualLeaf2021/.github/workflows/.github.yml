@@ -1,0 +1,58 @@
+name: VirtualLeaf compile clean and package for linux
+run-name: ${{ github.actor }} is testing on linux 🚀
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install
+        run: sudo ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
+      - run: sudo apt-get -qq update
+      - run: sudo apt-get -qq -y install lsb-release 
+      - run: lsb_release -a
+      - run: sudo apt-get -qq -y install build-essential git cmake make-guile g++ qtbase5-dev qtbase5-dev-tools qtcreator
+
+      - name: Build
+        run: cd ${{ github.workspace }}/src;qmake CONFIG+=release VirtualLeaf.pro;make -f Makefile
+
+      - name: Package
+        uses: actions/upload-artifact@v4
+        with:
+           name: VirtualLeaf-linux-x64
+           path: |
+             ${{ github.workspace }}/bin/**/*
+             ${{ github.workspace }}/data/**/*
+          
+        
+  release:
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
+    - name: Install
+      run: sudo apt-get install zip gzip
+    - name: Checkout code
+      uses: actions/checkout@v3
+        
+    - uses: actions/download-artifact@v4
+    - name: Display structure of downloaded files
+      run: ls -R ${{ github.workspace }};cd ${{ github.workspace }}
+        
+    - name: '📦 Package linux x64'
+      if: github.event_name == 'release' && github.event.action == 'created'
+      run: |
+        zip -r --symlinks VirtualLeaf-linux-x64.zip VirtualLeaf-linux-x64
+        gh release upload ${{github.event.release.tag_name}} VirtualLeaf-linux-x64.zip        
+      env:
+        GITHUB_TOKEN: ${{ github.TOKEN }}
+      shell: bash
+
