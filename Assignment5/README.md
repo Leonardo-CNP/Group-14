@@ -120,4 +120,32 @@ which doubles its chemical output and accelerates spread. Raising the threshold 
 
 # Task 5:
 
+In the previous models the diffusion coefficient for the exchange of chemicals between neighbour cells' walls was fixed, and coupling was also fixed. In our model coupling is dynamic and depends on the mechanical state of both cells. Our model takes the shared wall of both cells and calculates a lenght-weighted average stiffness. This gives us a diffusion coefficeint of 0.00001/stiffness. As cells become infected their stiffness goes down and they become better conected with their neighbours. 
+
 # Task 6:
+
+In CellHouseKeeping we put the new code after line 108 (stiffness_inf = 3 - (patho_chem_level);)
+
+patho_chem_level = min(Chemical(0) / 0.5 ; 1.2)
+stiffness_inf = 3
+
+if patho_chem_level > 0.1 and CellType() != 2:
+  SetCellVeto(false)
+  stiffness_inf = 3 - patho_chem_level
+
+  % the new defensive response
+  if Chemical(0) > defence_threshold
+    stiffness_inf = stiffness_inf + k_defence * (Chemical(0) - defence_threshold)
+    stiffness_inf = min(stiffness_inf, max_stiffness)
+
+  for every wall element of c
+    setStiffness(stiffness_inf)
+  
+  else
+    for every wall element
+      setStiffness(3)
+    SetCellVeto(true)
+
+We introduce the new parameters defence_threshold - the level above which the walls start to stiffen; k_stiffness - how strongly the wall stiffens by unit of chemical above treshold; max_stiffness - the maximum the walls can stiffen.
+
+We have given the plant negative feedback as the initial increase in the chemical will only slow the spread of it. Above the treshhold the walls stiffen and we get a lower diffusion coefficient which slows the spread the chemichal. 
